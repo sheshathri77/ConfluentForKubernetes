@@ -1,0 +1,20 @@
+{
+  "name": "kafka-rbac-rest",
+  "generation": 6,
+  "observedGeneration": 6,
+  "kafkaRest": {
+    "authentication": {
+      "sslClientAuthentication": true,
+      "type": "mtls"
+    },
+    "endpoint": "https://kafka.confluent.svc.cluster.local:8090",
+    "tls": {
+      "secretRef": "rbac-admin-mtls"
+    }
+  },
+  "status": {
+    "endpoint": "https://kafka.confluent.svc.cluster.local:8090",
+    "kafkaClusterID": "Nzc0NDlkZGYtYzRmMi00NQ",
+    "observedGeneration": 6
+  }
+}

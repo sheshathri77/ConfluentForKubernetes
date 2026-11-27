@@ -1,0 +1,56 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: ConfluentRolebinding
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"platform.confluent.io/v1beta1","kind":"ConfluentRolebinding","metadata":{"annotations":{},"name":"rbac-reader-task2-demo","namespace":"confluent"},"spec":{"kafkaClusterRef":{"name":"kafka","namespace":"confluent"},"kafkaRestClassRef":{"name":"kafka-rbac-rest","namespace":"confluent"},"principal":{"name":"rbac-reader","type":"user"},"resourcePatterns":[{"name":"task2-demo","patternType":"LITERAL","resourceType":"Topic"}],"role":"DeveloperRead"}}
+    platform.confluent.io/last-spec-hash: HC0z1/bHujvxBbgjoSeTxqhxD/VXxz4En6T/5gXzF/E=
+  creationTimestamp: "2026-11-24T09:02:24Z"
+  finalizers:
+  - confluentrolebinding.finalizers.platform.confluent.io
+  generation: 1
+  name: rbac-reader-task2-demo
+  namespace: confluent
+  resourceVersion: "48955"
+  uid: 2bcafbaf-1b2b-4f46-ab12-da83907e5384
+spec:
+  kafkaClusterRef:
+    name: kafka
+    namespace: confluent
+  kafkaRestClassRef:
+    name: kafka-rbac-rest
+    namespace: confluent
+  principal:
+    name: rbac-reader
+    type: user
+  resourcePatterns:
+  - name: task2-demo
+    patternType: LITERAL
+    resourceType: Topic
+  role: DeveloperRead
+status:
+  appState: Created
+  conditions:
+  - lastProbeTime: "2026-11-24T09:02:25Z"
+    lastTransitionTime: "2026-11-24T09:02:25Z"
+    message: Application is created
+    reason: Created
+    status: "True"
+    type: platform.confluent.io/app-ready
+  kafkaClusterID: Nzc0NDlkZGYtYzRmMi00NQ
+  kafkaRestClass: confluent/kafka-rbac-rest
+  mdsClusterID: Nzc0NDlkZGYtYzRmMi00NQ
+  mdsEndpoint: https://kafka.confluent.svc.cluster.local:8090
+  observedGeneration: 1
+  principal: User:rbac-reader
+  resolvedClusterRef:
+    kind: Kafka
+    name: kafka
+    namespace: confluent
+  resourcePatterns:
+  - name: task2-demo
+    patternType: LITERAL
+    resourceType: Topic
+  role: DeveloperRead
+  roleLevel: false
+  state: CREATED

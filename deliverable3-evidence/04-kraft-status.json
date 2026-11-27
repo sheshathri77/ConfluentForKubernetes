@@ -1,0 +1,63 @@
+{
+  "name": "kraftcontroller",
+  "generation": 2,
+  "observedGeneration": 2,
+  "conditions": [
+    {
+      "lastProbeTime": "2026-11-22T12:54:18Z",
+      "lastTransitionTime": "2026-11-24T02:33:30Z",
+      "message": "Cluster is ready.",
+      "reason": "ClusterIsReady",
+      "status": "True",
+      "type": "platform.confluent.io/cluster-ready"
+    },
+    {
+      "lastProbeTime": "2026-11-22T13:07:49Z",
+      "lastTransitionTime": "2026-11-24T02:33:30Z",
+      "message": "Deployment has minimum availability.",
+      "reason": "MinimumReplicasAvailable",
+      "status": "True",
+      "type": "platform.confluent.io/statefulset-available"
+    },
+    {
+      "lastProbeTime": "2026-11-22T13:07:49Z",
+      "lastTransitionTime": "2026-11-24T02:33:30Z",
+      "message": "Kubernetes resources ready.",
+      "reason": "KubernetesResourcesReady",
+      "status": "True",
+      "type": "platform.confluent.io/resources-ready"
+    },
+    {
+      "lastProbeTime": "2026-11-22T13:07:49Z",
+      "lastTransitionTime": "2026-11-22T13:07:49Z",
+      "message": "Cluster is not being garbage collected",
+      "reason": "Garbage Collection not triggered",
+      "status": "False",
+      "type": "platform.confluent.io/garbage-collecting"
+    },
+    {
+      "lastProbeTime": "2026-11-22T13:07:49Z",
+      "lastTransitionTime": "2026-11-23T15:29:22Z",
+      "message": "Cluster is not rolling, ignore=false",
+      "reason": "ClusterNotRolling",
+      "status": "False",
+      "type": "platform.confluent.io/rolling"
+    },
+    {
+      "lastProbeTime": "2026-11-22T15:00:44Z",
+      "lastTransitionTime": "2026-11-23T15:29:22Z",
+      "message": "Configuration is updated.",
+      "reason": "ConfigurationIsUpdated",
+      "status": "False",
+      "type": "platform.confluent.io/config-revision-hash"
+    },
+    {
+      "lastProbeTime": "2026-11-23T15:27:37Z",
+      "lastTransitionTime": "2026-11-23T15:29:22Z",
+      "message": "Reference secret is updated.",
+      "reason": "ReferenceSecretIsUpdated",
+      "status": "False",
+      "type": "platform.confluent.io/secret-revision-hash"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    # Flink cluster configuration
+
+    # JobManager connection
+    jobmanager.rpc.address: flink-jobmanager
+    jobmanager.bind-host: 0.0.0.0
+
+    # Web UI
+    rest.address: flink-jobmanager
+    rest.bind-address: 0.0.0.0
+    rest.port: 8081
+
+    # TaskManager
+    taskmanager.bind-host: 0.0.0.0
+    taskmanager.numberOfTaskSlots: 1
+
+    # Default execution parallelism
+    parallelism.default: 1
+
+    # JVM process memory
+    jobmanager.memory.process.size: 1024m
+    taskmanager.memory.process.size: 1536m
+kind: ConfigMap
+metadata:
+  name: flink-config
+  namespace: confluent

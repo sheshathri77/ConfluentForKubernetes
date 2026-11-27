@@ -1,0 +1,21 @@
+Final verification: Tue Nov 24 18:11:46 IST 2026
+
+Old Secret:
+NotFound — successfully removed
+
+Replacement credentials:
+NAME               TYPE     DATA   AGE
+rbac-admin-mtls    Opaque   3      27h
+rbac-reader-mtls   Opaque   3      94m
+
+Kafka and KRaft workloads:
+NAME                                  READY   STATUS      RESTARTS        AGE
+confluent-operator-6599486886-cxnmm   1/1     Running     53 (140m ago)   47h
+dns-check                             0/1     Completed   0               135m
+kafka-0                               1/1     Running     0               28m
+kraftcontroller-0                     1/1     Running     5 (143m ago)    21h
+
+Persistent volumes:
+NAME                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+data0-kafka-0             Bound    pvc-f67171de-3831-45f2-936e-42c6ee118e53   10Gi       RWO            standard       <unset>                 45h
+data0-kraftcontroller-0   Bound    pvc-e0bd9f05-2617-421f-ad3f-64f47181e6e0   5Gi        RWO            standard       <unset>                 47h

@@ -1,0 +1,29 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaRestClass
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"platform.confluent.io/v1beta1","kind":"KafkaRestClass","metadata":{"annotations":{},"name":"kafka-rbac-rest","namespace":"confluent"},"spec":{"kafkaClusterRef":{"name":"kafka-rbac","namespace":"confluent"},"kafkaRest":{"authentication":{"sslClientAuthentication":true,"type":"mtls"},"endpoint":"https://kafka-rbac.confluent.svc.cluster.local:8090","tls":{"secretRef":"kafka3-rbac-admin-mtls"}}}}
+  creationTimestamp: "2026-11-23T15:34:31Z"
+  finalizers:
+  - kafkarestclass.finalizers.platform.confluent.io
+  generation: 5
+  name: kafka-rbac-rest
+  namespace: confluent
+  resourceVersion: "50781"
+  uid: 4db39e83-22df-4720-ac47-97c6c01955d4
+spec:
+  kafkaClusterRef:
+    name: kafka
+    namespace: confluent
+  kafkaRest:
+    authentication:
+      sslClientAuthentication: true
+      type: mtls
+    endpoint: https://kafka.confluent.svc.cluster.local:8090
+    tls:
+      secretRef: kafka3-rbac-rest-client
+status:
+  endpoint: https://kafka.confluent.svc.cluster.local:8090
+  kafkaClusterID: Nzc0NDlkZGYtYzRmMi00NQ
+  observedGeneration: 5

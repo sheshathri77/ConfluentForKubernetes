@@ -1,0 +1,20 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: ConfluentRolebinding
+metadata:
+  name: rbac-reader-task2-demo
+  namespace: confluent
+spec:
+  principal:
+    type: user
+    name: rbac-reader
+  role: DeveloperRead
+  resourcePatterns:
+    - name: task2-demo
+      patternType: LITERAL
+      resourceType: Topic
+  kafkaClusterRef:
+    name: kafka
+    namespace: confluent
+  kafkaRestClassRef:
+    name: kafka-rbac-rest
+    namespace: confluent

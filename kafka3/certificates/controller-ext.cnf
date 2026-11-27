@@ -1,0 +1,17 @@
+[controller_cert]
+basicConstraints = critical,CA:FALSE
+keyUsage = critical,digitalSignature,keyEncipherment
+extendedKeyUsage = serverAuth,clientAuth
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = kraftcontroller-rbac
+DNS.2 = kraftcontroller-rbac.confluent
+DNS.3 = kraftcontroller-rbac.confluent.svc
+DNS.4 = kraftcontroller-rbac.confluent.svc.cluster.local
+DNS.5 = kraftcontroller-rbac-0-internal
+DNS.6 = kraftcontroller-rbac-0-internal.confluent
+DNS.7 = kraftcontroller-rbac-0-internal.confluent.svc
+DNS.8 = kraftcontroller-rbac-0-internal.confluent.svc.cluster.local

@@ -1,0 +1,21 @@
+=== PODS ===
+NAME                                  READY   STATUS      RESTARTS        AGE    IP           NODE        NOMINATED NODE   READINESS GATES
+confluent-operator-6599486886-cxnmm   1/1     Running     53 (122m ago)   47h    10.244.0.3   kafka-lab   <none>           <none>
+dns-check                             0/1     Completed   0               118m   10.244.0.6   kafka-lab   <none>           <none>
+kafka-0                               1/1     Running     0               10m    10.244.0.7   kafka-lab   <none>           <none>
+kraftcontroller-0                     1/1     Running     5 (126m ago)    20h    10.244.0.5   kafka-lab   <none>           <none>
+
+=== PVCs ===
+NAME                      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+data0-kafka-0             Bound    pvc-f67171de-3831-45f2-936e-42c6ee118e53   10Gi       RWO            standard       <unset>                 45h
+data0-kraftcontroller-0   Bound    pvc-e0bd9f05-2617-421f-ad3f-64f47181e6e0   5Gi        RWO            standard       <unset>                 47h
+
+=== SERVICES ===
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                                     AGE
+confluent-operator           ClusterIP   10.98.194.220    <none>        7778/TCP                                                                                    47h
+kafka                        ClusterIP   None             <none>        9074/TCP,9092/TCP,8090/TCP,9071/TCP,7203/TCP,7777/TCP,7778/TCP,9072/TCP,9073/TCP,9075/TCP   45h
+kafka-0-internal             ClusterIP   10.111.208.79    <none>        9074/TCP,9092/TCP,8090/TCP,9071/TCP,7203/TCP,7777/TCP,7778/TCP,9072/TCP,9073/TCP,9075/TCP   45h
+kafka-0-np                   NodePort    10.97.217.25     <none>        9092:30001/TCP                                                                              45h
+kafka-bootstrap-np           NodePort    10.106.190.199   <none>        9092:30000/TCP                                                                              45h
+kraftcontroller              ClusterIP   None             <none>        9074/TCP,7203/TCP,7777/TCP,7778/TCP,9072/TCP                                                47h
+kraftcontroller-0-internal   ClusterIP   10.99.98.50      <none>        9074/TCP,7203/TCP,7777/TCP,7778/TCP,9072/TCP                                                47h

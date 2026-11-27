@@ -1,0 +1,16 @@
+LAST SEEN   TYPE      REASON             OBJECT                      MESSAGE
+10m         Normal    SuccessfulUpdate   kafka/kafka                 resource type *v1.StatefulSet successfully updated
+10m         Normal    SuccessfulDelete   statefulset/kafka           Delete Pod kafka-0 in StatefulSet kafka successful
+10m         Normal    Killing            pod/kafka-0                 Stopping container kafka
+10m         Normal    SuccessfulUpdate   kafka/kafka                 rolling is starting for kafka cluster
+10m         Warning   Error              kafka/kafka                 pod kafka-0: container kafka exited with code 143:
+10m         Normal    Created            pod/kafka-0                 Container created
+10m         Normal    Started            pod/kafka-0                 Container started
+10m         Normal    Pulled             pod/kafka-0                 Container image "confluentinc/confluent-init-container:3.4.0" already present on machine and can be accessed by the pod
+10m         Normal    Scheduled          pod/kafka-0                 Successfully assigned confluent/kafka-0 to kafka-lab
+10m         Normal    NoPods             poddisruptionbudget/kafka   No matching pods found
+10m         Normal    SuccessfulCreate   statefulset/kafka           Create Pod kafka-0 in StatefulSet kafka successful
+10m         Normal    Created            pod/kafka-0                 Container created
+10m         Normal    Started            pod/kafka-0                 Container started
+10m         Normal    Pulled             pod/kafka-0                 Container image "confluentinc/cp-server:8.3.0" already present on machine and can be accessed by the pod
+9m18s       Normal    SuccessfulUpdate   kafka/kafka                 rolling is in progress for pod kafka-0

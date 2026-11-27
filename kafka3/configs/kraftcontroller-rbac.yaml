@@ -1,0 +1,48 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: KRaftController
+metadata:
+  name: kraftcontroller-rbac
+  namespace: confluent
+spec:
+  replicas: 1
+
+  image:
+    application: confluentinc/cp-server:8.3.0
+    init: confluentinc/confluent-init-container:3.4.0
+
+  dataVolumeCapacity: 5Gi
+
+  storageClass:
+    name: standard
+
+  tls:
+    secretRef: kafka3-controller-tls
+
+  authorization:
+    type: rbac
+    superUsers:
+      - User:kraftcontroller
+      - User:kafka-rbac
+
+  listeners:
+    controller:
+      authentication:
+        type: mtls
+        mtls:
+          sslClientAuthentication: required
+          principalMappingRules:
+            - "RULE:.*CN=([a-zA-Z0-9.-]*).*$/$1/"
+            - "DEFAULT"
+      tls:
+        enabled: true
+        secretRef: kafka3-controller-tls
+
+  dependencies:
+    mdsKafkaCluster:
+      bootstrapEndpoint: kafka-rbac.confluent.svc.cluster.local:9071
+      authentication:
+        type: mtls
+        sslClientAuthentication: true
+      tls:
+        enabled: true
+        secretRef: kafka3-controller-tls

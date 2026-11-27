@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flink-taskmanager
+  namespace: confluent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flink
+      component: taskmanager
+  template:
+    metadata:
+      labels:
+        app: flink
+        component: taskmanager
+    spec:
+      containers:
+        - name: taskmanager
+          image: flink:2.3.0-scala_2.12-java17
+          imagePullPolicy: IfNotPresent
+          args: ["taskmanager"]
+          resources:
+            requests:
+              cpu: 250m
+              memory: 768Mi
+            limits:
+              cpu: "1"
+              memory: 1792Mi
+          volumeMounts:
+            - name: flink-config
+              mountPath: /opt/flink/conf/config.yaml
+              subPath: config.yaml
+      volumes:
+        - name: flink-config
+          configMap:
+            name: flink-config

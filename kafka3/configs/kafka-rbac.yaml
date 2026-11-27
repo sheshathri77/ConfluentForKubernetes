@@ -1,0 +1,95 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka-rbac
+  namespace: confluent
+spec:
+  replicas: 1
+
+  image:
+    application: confluentinc/cp-server:8.3.0
+    init: confluentinc/confluent-init-container:3.4.0
+
+  dataVolumeCapacity: 10Gi
+
+  storageClass:
+    name: standard
+
+  dependencies:
+    kRaftController:
+      clusterRef:
+        name: kraftcontroller-rbac
+        namespace: confluent
+      controllerListener:
+        authentication:
+          type: mtls
+          mtls:
+            sslClientAuthentication: required
+            principalMappingRules:
+              - "RULE:.*CN=([a-zA-Z0-9.-]*).*$/$1/"
+              - "DEFAULT"
+        tls:
+          enabled: true
+          secretRef: kafka3-broker-tls
+    kafkaRest:
+      authentication:
+        type: mtls
+        sslClientAuthentication: true
+      tls:
+        enabled: true
+        secretRef: kafka3-broker-tls
+
+  tls:
+    secretRef: kafka3-broker-tls
+
+  authorization:
+    type: rbac
+    superUsers:
+      - User:rbac-admin
+      - User:kafka-rbac
+      - User:kraftcontroller
+
+  listeners:
+    internal:
+      authentication:
+        type: mtls
+        mtls:
+          sslClientAuthentication: required
+          principalMappingRules:
+            - "RULE:.*CN=([a-zA-Z0-9.-]*).*$/$1/"
+            - "DEFAULT"
+      tls:
+        enabled: true
+        secretRef: kafka3-broker-tls
+
+    external:
+      authentication:
+        type: mtls
+        mtls:
+          sslClientAuthentication: required
+          principalMappingRules:
+            - "RULE:.*CN=([a-zA-Z0-9.-]*).*$/$1/"
+            - "DEFAULT"
+      tls:
+        enabled: true
+        secretRef: kafka3-broker-tls
+      externalAccess:
+        type: nodePort
+        nodePort:
+          host: kafka-rbac.minikube.test
+          nodePortOffset: 31000
+
+  services:
+    mds:
+      authentication:
+        type: bearer
+      tls:
+        enabled: true
+      tokenKeyPair:
+        secretRef: mds-token
+      provider:
+        mtls:
+          sslClientAuthentication: required
+          principalMappingRules:
+            - "RULE:.*CN=([a-zA-Z0-9.-]*).*$/$1/"
+            - "DEFAULT"

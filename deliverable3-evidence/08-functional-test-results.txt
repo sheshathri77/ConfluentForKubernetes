@@ -1,0 +1,20 @@
+DELIVERABLE 3 — FUNCTIONAL TEST RESULTS
+
+Reader identity: rbac-reader
+Reader certificate authentication through MDS: HTTP 200
+Reader topic access for task2-demo: HTTP 200
+Topic API response kind: KafkaTopic
+
+Authorization denial test:
+Reader attempted a write to task2-demo.
+Kafka REST response contained error_code 40301:
+Not authorized to access topics: [task2-demo]
+The write operation was denied.
+
+Administrator identity:
+rbac-admin certificate authentication through MDS: HTTP 200
+
+Note:
+The unauthorized write test was performed before the final credential
+rotation. Reader authentication and topic-read access were verified
+again after rotation.
